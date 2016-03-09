@@ -1,0 +1,48 @@
+﻿@model jobApp.Models.Submit
+
+@{
+    ViewBag.Title = Resources.deletebtn;
+}
+
+<h2>@Resources.deletebtn</h2>
+
+<div>
+    <h4 style="color:red">@Resources.deleteconf</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.submitEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.submitEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CV)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="@Resources.deletebtn" class="btn btn-danger" /> |
+            @Html.ActionLink(Resources.backtolist, "Index", "MyJobs")
+        </div>
+    }
+</div>

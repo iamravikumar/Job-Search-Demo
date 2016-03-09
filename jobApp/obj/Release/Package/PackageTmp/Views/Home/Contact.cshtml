@@ -1,0 +1,147 @@
+﻿@model jobApp.Models.EmailFormModel
+@{
+    ViewBag.Title = Resources.contactContact;
+}
+@*==================================================================================*@
+@{
+            var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+@helper selected(string c, string culture)
+        {
+if (c == culture)
+{
+        @:checked="checked"
+             }
+}
+@using (Html.BeginForm("SetCulture","Home"))
+            {
+    <fieldset>
+        <div class="control-group">
+            <div class="controls">
+                <label for="en-us">
+                    <input name="culture" id="en-us" value="en-us" type="radio" @selected("en-us", culture) />
+                    <img src="~/Content/Images/us.png" style="width:20px;height:15px;margin-bottom:7px;" /> <span style="color:Highlight">English</span>
+                </label>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <label for="mk">
+                    <input name="culture" id="mk" value="mk" type="radio" @selected("mk", culture) />
+                    <img src="~/Content/Images/mkd.png" style="width:20px;height:15px;margin-bottom:7px;" /> <span style="color:Highlight">Македонски</span>
+                </label>
+            </div>
+        </div>
+    </fieldset>
+
+}
+
+
+
+
+
+
+
+
+@*====================================================================================*@
+<h2>@Resources.contactContact</h2>
+<hr />
+<style>
+    #abre {
+        display: inline;
+    }
+
+    h4 {
+        color: Highlight;
+    }
+    .label {
+        margin-left:14px;
+    }
+</style>
+<div id="abre">
+    <div style="float:right">
+        <script src="http://maps.googleapis.com/maps/api/js">
+        </script>
+        <h4>@Resources.contactLocation</h4>
+        <script>
+            var myCenter = new google.maps.LatLng(41.735903, 22.203966);
+
+            function initialize() {
+                var mapProp = {
+                    center: myCenter,
+                    zoom: 16,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+
+                var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+                var marker = new google.maps.Marker({
+                    position: myCenter,
+                    title: 'Click to zoom'
+                });
+
+                marker.setMap(map);
+
+                // Zoom to 9 when clicking on marker
+                google.maps.event.addListener(marker, 'click', function () {
+                    map.setZoom(9);
+                    map.setCenter(marker.getPosition());
+                });
+            }
+            google.maps.event.addDomListener(window, 'load', initialize);
+        </script>
+        <div id="googleMap" style="width:500px;height:380px;"></div>
+    </div><br />
+
+
+
+    <div style="float:left">
+        @using (Html.BeginForm())
+        {
+            <div class="form-horizontal">
+                @Html.AntiForgeryToken()
+                <h4>@Resources.contactComments</h4>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.FromName, new { @class = "label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.FromName, new { @class = "form-control" })
+                    </div>
+                    <br /><br />
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.FromEmail, new { @class = "label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.FromEmail, new { @class = "form-control" })
+                    </div>
+                    <br /><br />
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Message, new { @class = "label" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(m => m.Message, new { @class = "form-control" })
+                    </div>
+                    <br /><br />
+                </div>
+                <div class="form-group">
+                    <div class="label">
+                        <input type="submit" class="btn btn-default" value=@Resources.sendBtn />
+                    </div>
+                </div><br />
+            </div>
+        }
+
+    </div>
+</div>
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script type="text/javascript">
+                    (function ($) {
+                        $("input[type = 'radio']").click(function () {
+                            $(this).parents("form").submit(); // post form
+                        });
+
+                    })(jQuery);
+</script>
+}

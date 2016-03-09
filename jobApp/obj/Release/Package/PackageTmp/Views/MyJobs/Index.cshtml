@@ -1,0 +1,210 @@
+﻿@model IEnumerable<jobApp.Models.Job>
+
+@{
+    ViewBag.Title = Resources.myJobsmenu;
+}
+@{
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+@helper selected(string c, string culture)
+{
+if (c == culture)
+{
+        @:checked="checked"
+    }
+}
+@using (Html.BeginForm("SetCulture", "Home"))
+{
+    <fieldset>
+        <div class="control-group">
+            <div class="controls">
+                <label for="en-us">
+                    <input name="culture" id="en-us" value="en-us" type="radio" @selected("en-us", culture) />
+                    <img src="~/Content/Images/us.png" style="width:20px;height:15px;margin-bottom:7px;" /> <span style="color:Highlight">English</span>
+                </label>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <label for="mk">
+                    <input name="culture" id="mk" value="mk" type="radio" @selected("mk", culture) />
+                    <img src="~/Content/Images/mkd.png" style="width:20px;height:15px;margin-bottom:7px;" /> <span style="color:Highlight">Македонски</span>
+                </label>
+            </div>
+        </div>
+    </fieldset>
+
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        (function ($) {
+            $("input[type = 'radio']").click(function () {
+                $(this).parents("form").submit(); // post form
+            });
+
+        })(jQuery);
+    </script>
+}
+
+<br />
+<script>
+    function GetApplicants() {
+        $.get("/Submits/Index", function (data) {
+            $(".applicants1").html(data)
+            $("#Jobs").hide(data)
+            $("#user-name-input").show(data);
+            //$("#PostJob").hide(data)
+            //$("#h2Jobs").hide(data);
+        });
+    }
+    function GetJobs() {
+        $.get("/MyJobs/Index", function (data) {
+            $("#Jobs").toggle(data);
+            $("#user-name-input").hide(data);
+            //$("#PostJob").hide(data)
+            //$("#h2Jobs").hide(data);
+        });
+    }
+</script>
+<hr />
+<input type="button" onclick="GetJobs()" value="@Resources.menuJobs" class="btn btn-default" style="width:90px;"/>
+<input type="button" onclick="GetApplicants()" value="@Resources.applicantsFound" class="btn btn-default" />
+<hr />
+<div id="Jobs">
+<h2 id="h2Jobs" style="float:right">@Resources.menuJobs</h2>
+<p id="PostJob">
+    @Html.ActionLink(Resources.postJob, "Create", "Jobs",null, new { @class = "btn btn-success" })
+</p>
+<table class="table" id="JobsTable">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.JobPosition)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobCompanyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobSalary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(item.JobPosition, "Details", "MyJobs", new { Id = item.JobId }, new { @class = "btn btn-default" })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobCompanyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobSalary)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category)
+        </td>
+        <td>
+            @Html.ActionLink(Resources.editbtn, "Edit", new { id = item.JobId },new { @class = "btn btn-primary" } ) |
+            @Html.ActionLink(Resources.detailsbtn, "Details", new { id = item.JobId }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink(Resources.deletebtn, "Delete", new { id = item.JobId },new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>
+    </div>
+<hr />
+@*<div class="applicants" id="Applicants">*@
+@*===========================================================*@
+<style>
+        #user-name-input {
+            color: black;
+            border-color: Highlight;
+            background-color: ghostwhite;
+            border-radius: 5px;
+            width: 220px;
+            height: 35px;
+        }
+    </style>
+<p style="">
+    @Html.TextBox("Position", null, new { id = "user-name-input", placeholder = Resources.insertsearch })
+</p>
+<div id="results-output" class="applicants1"></div>
+
+<script type="text/javascript">
+$("#user-name-input").change(function(e) {
+    $.ajax({
+        url: '@Url.Action("Index", "Submits")'
+        , cache: false
+        , type: "post"
+        , data: {Position: $("#user-name-input").val() }
+    }).done(function (responseData) {
+        if (responseData != undefined && responseData != null) {
+            // make sure we got data back
+            $("#results-output").html(responseData);
+        } else {
+            console.log("No data returned.");
+            alert("An error occurred while loading data.");
+        } // end if/else
+    }).fail(function (data) {
+        console.log(data);
+        alert("BOOOM");
+    });
+})
+</script>
+@*=======================================================*@
+@*</div>*@
+<style>
+    #result {
+        color: Highlight;
+    }
+
+    #joblist {
+        border: 1px solid Highlight;
+        padding: 40px;
+    }
+
+    #Position {
+        color: black;
+        border-color: Highlight;
+        background-color: ghostwhite;
+        border-radius: 5px;
+        width: 220px;
+        height: 35px;
+    }
+
+    #City {
+        color: black;
+        border-color: Highlight;
+        background-color: ghostwhite;
+        border-radius: 5px;
+        width: 220px;
+        height: 35px;
+    }
+
+        th {
+            color: #ffffff;
+            background-color: Highlight;
+            /*opacity: 0.5;*/
+            border-color: #cccccc;
+        }
+
+        tr {
+            color:cadetblue;
+            background-color: cornflowerblue;
+            border-color: #cccccc;
+        }
+        tr:nth-child(even)   { background-color:#fff; }
+        tr:nth-child(odd)    { background-color:#eee; }
+</style>

@@ -1,0 +1,74 @@
+﻿@model IEnumerable<jobApp.Models.Submit>
+
+
+@{
+    Layout = null;
+}
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryui")
+<h2 style="float:right;">@Resources.applicantsFound</h2>
+
+@*========================================*@
+@*@if (ViewBag.Count == 1)
+{
+    <p id="result"><strong><span style="color:red;font-size:medium;">@ViewBag.Count</span> @Resources.applicantFound</strong></p>
+}
+else if (ViewBag.Count == 0)
+{
+    <p id="result"><strong>@Resources.noMatch</strong></p>
+}
+else
+{
+    <p id="result"><strong><span style="color:red;font-size:medium;">@ViewBag.Count </span>@Resources.applicantsFound</strong></p>
+
+}*@
+
+@*========================================*@
+<style>
+    body {
+        color: Highlight;
+    }
+</style>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Job.JobPosition)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().fullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().submitEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().CV)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Job.JobPosition)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.submitEmail)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.CV)*@
+                <a href="~/Submits/Download?ImageName=@Html.DisplayFor(modelItem => item.CV)" target="_blank" class="btn btn-primary">@Resources.Download</a>
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id=item.SubmitId }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.SubmitId }) |*@
+                @Html.ActionLink(Resources.deletebtn, "Delete", new { id = item.SubmitId }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,10 @@
+C:\Users\Donev\documents\visual studio 2015\Projects\Demos\Resources\bin\Release\Resources.dll
+C:\Users\Donev\documents\visual studio 2015\Projects\Demos\Resources\bin\Release\Resources.pdb
+C:\Users\Donev\documents\visual studio 2015\Projects\Demos\Resources\bin\Release\mk\Resources.resources.dll
+C:\Users\Donev\documents\visual studio 2015\Projects\Demos\Resources\obj\Release\Resources.csprojResolveAssemblyReference.cache
+C:\Users\Donev\documents\visual studio 2015\Projects\Demos\Resources\obj\Release\Resources.Resources.resources
+C:\Users\Donev\documents\visual studio 2015\Projects\Demos\Resources\obj\Release\Resources.Resources.mk.resources
+C:\Users\Donev\documents\visual studio 2015\Projects\Demos\Resources\obj\Release\Resources.csproj.GenerateResource.Cache
+C:\Users\Donev\documents\visual studio 2015\Projects\Demos\Resources\obj\Release\mk\Resources.resources.dll
+C:\Users\Donev\documents\visual studio 2015\Projects\Demos\Resources\obj\Release\Resources.dll
+C:\Users\Donev\documents\visual studio 2015\Projects\Demos\Resources\obj\Release\Resources.pdb

@@ -1,0 +1,108 @@
+﻿@model IEnumerable<jobApp.Models.Job>
+@{
+    ViewBag.Title = Resources.menuHome;
+}
+
+@{
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+@helper selected(string c, string culture)
+{
+if (c == culture)
+{
+        @:checked="checked"
+    }
+}
+@using (Html.BeginForm("SetCulture", "Home"))
+{
+    <fieldset>
+        <div class="control-group">
+            <div class="controls">
+                <label for="en-us">
+                    <input name="culture" id="en-us" value="en-us" type="radio" @selected("en-us", culture) />
+                    <img src="~/Content/Images/us.png" style="width:20px;height:15px;margin-bottom:7px;" /> <span style="color:Highlight">English</span>
+                </label>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <label for="mk">
+                    <input name="culture" id="mk" value="mk" type="radio" @selected("mk", culture) />
+                    <img src="~/Content/Images/mkd.png" style="width:20px;height:15px;margin-bottom:7px;" /> <span style="color:Highlight">Македонски</span>
+                </label>
+            </div>
+        </div>
+    </fieldset>
+
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        (function ($) {
+            $("input[type = 'radio']").click(function () {
+                $(this).parents("form").submit(); // post form
+            });
+
+        })(jQuery);
+    </script>
+}
+<hr/>
+<style>
+    img {
+        height: 60px;
+        width: 60px;
+    }
+</style>
+
+<div class="aaa">
+    <div class="home1">
+        <br />
+        <h1>
+            <img src="~/Content/Images/all.png" />
+            <a href="/jobs/index">@Resources.allcategories</a>
+        </h1>
+    </div>
+    <div class="home1">
+        <h1>
+            <img src="~/Content/Images/it.png" />
+            @Html.ActionLink(Resources.InformationTechnology, "Index", "Jobs",new { @category = "IT" },null)
+        </h1>
+    </div>
+    <div class="home1">
+        <h1>
+            <img src="~/Content/Images/banking.png" />
+            @Html.ActionLink(Resources.Banking, "Index", "Jobs",new { @category = "Banking" }, null)
+        </h1>
+    </div>
+    <div class="home1">
+        <h1>
+            <img src="~/Content/Images/construction.png" />
+            @Html.ActionLink(Resources.Construction, "Index", "Jobs", new { @category = "Construction" }, null)
+        </h1>
+    </div>
+    <div class="home1">
+        <h1>
+            <img src="~/Content/Images/retail.png" />
+            @Html.ActionLink(Resources.Retail, "Index", "Jobs", new { @category = "Retail" },null)
+        </h1>
+    </div>
+    <div class="home1">
+        <h1>
+            <img src="~/Content/Images/sales.ico" />
+            @Html.ActionLink(Resources.Sales, "Index", "Jobs", new { @category = "Sales" }, null)
+        </h1>
+    </div>
+    <div class="home1">
+        <h1>
+            <img src="~/Content/Images/marketing.png" />
+            @Html.ActionLink(Resources.Marketing,"Index", "Jobs", new { @category = "Marketing" }, null)
+        </h1>
+    </div>
+</div>
+@Html.ActionLink(Resources.InformationTechnology, "Index", "Jobs", new { @category = "IT" }, null) |
+@Html.ActionLink(Resources.Banking, "Index", "Jobs", new { @category = "Banking" }, null) |
+@Html.ActionLink(Resources.Construction, "Index", "Jobs", new { @category = "Construction" }, null) |
+@Html.ActionLink(Resources.Retail, "Index", "Jobs", new { @category = "Retail" }, null) |
+@Html.ActionLink(Resources.Sales, "Index", "Jobs", new { @category = "Sales" }, null) |
+@Html.ActionLink(Resources.Marketing, "Index", "Jobs", new { @category = "Marketing" }, null)

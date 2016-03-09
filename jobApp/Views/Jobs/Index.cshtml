@@ -1,0 +1,204 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<jobApp.Models.Job>
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+@{
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+@helper selected(string c, string culture)
+{
+if (c == culture)
+{
+        @:checked="checked"
+    }
+}
+@using (Html.BeginForm("SetCulture", "Jobs"))
+{
+    <fieldset>
+        <div class="control-group">
+            <div class="controls">
+                <label for="en-us">
+                    <input name="culture" id="en-us" value="en-us" type="radio" @selected("en-us", culture) />
+                    <img src="~/Content/Images/us.png" style="width:20px;height:15px;margin-bottom:7px;" /> <span style="color:Highlight">English</span>
+                </label>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <label for="mk">
+                    <input name="culture" id="mk" value="mk" type="radio" @selected("mk", culture) />
+                    <img src="~/Content/Images/mkd.png" style="width:20px;height:15px;margin-bottom:7px;" /> <span style="color:Highlight">Македонски</span>
+</label>
+            </div>
+        </div>
+    </fieldset>
+
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        (function ($) {
+            $("input[type = 'radio']").click(function () {
+                $(this).parents("form").submit(); // post form
+            });
+
+        })(jQuery);
+    </script>
+}
+
+@{
+    ViewBag.Title = Resources.menuJobs;
+}
+<br>
+<div id="joblist">
+    <div style="float:right;">
+        <a href="jobs/index">@Resources.allcategories</a> |
+        @Html.ActionLink(Resources.InformationTechnology, "Index", "Jobs", new { @category = "IT" }, null) |
+        @Html.ActionLink(Resources.Banking, "Index", "Jobs", new { @category = "Banking" }, null) |
+        @Html.ActionLink(Resources.Construction, "Index", "Jobs", new { @category = "Construction" }, null) |
+        @Html.ActionLink(Resources.Retail, "Index", "Jobs", new { @category = "Retail" }, null) |
+        @Html.ActionLink(Resources.Sales, "Index", "Jobs", new { @category = "Sales" }, null) |
+        @Html.ActionLink(Resources.Marketing, "Index", "Jobs", new { @category = "Marketing" }, null)
+
+    </div>
+
+        <p>
+            @Html.ActionLink(Resources.postJob, "Create",null, new { @class = "btn btn-success" })
+            @*@Html.ActionLink("Apply Now", "Create", "Submits", new { id = item.JobId }, new { @class = "btn btn-success" })*@
+        </p>
+
+    @using (Html.BeginForm("Index", "Jobs", FormMethod.Get))
+    {
+        <div class="form-group" style="display:inline;">
+            <h4 style="color:Highlight;float:left;" name="searchingforjob">@Resources.searchingforjob</h4><br><br>
+            @Html.TextBox("Position", null, new { placeholder = Resources.searchbyposition })
+            @Html.TextBox("City", null, new { placeholder = Resources.searchbycity })
+            <input type="submit" value = "@Resources.SearchBtn" class="btn btn-info" /><br>
+        </div>
+
+    }
+
+</div>
+<br>
+@if (ViewBag.Count == 1)
+{
+    <p id="result"><strong><span style="color:red;font-size:medium;">@ViewBag.Count</span> @Resources.jobFound</strong></p>
+}
+else if (ViewBag.Count == 0)
+{
+    <p id="result"><strong>@Resources.noMatch</strong></p>
+}
+else
+{
+    <p id="result"><strong><span style="color:red;font-size:medium;">@ViewBag.Count </span>@Resources.jobsFound</strong></p>
+
+}
+
+
+<div id="joblist">
+
+    <style>
+        #result {
+            color: Highlight;
+        }
+
+        #joblist {
+            border: 1px solid Highlight;
+            padding: 40px;
+        }
+
+        #Position {
+            color: black;
+            border-color: Highlight;
+            background-color: ghostwhite;
+            border-radius: 5px;
+            width: 220px;
+            height: 35px;
+        }
+
+        #City {
+            color: black;
+            border-color: Highlight;
+            background-color: ghostwhite;
+            border-radius: 5px;
+            width: 220px;
+            height: 35px;
+        }
+
+        th {
+            color: #ffffff;
+            background-color: Highlight;
+            /*opacity: 0.5;*/
+            border-color: #cccccc;
+        }
+
+        tr {
+            color:cadetblue;
+            background-color: cornflowerblue;
+            border-color: #cccccc;
+        }
+        tr:nth-child(even)   { background-color:#fff; }
+        tr:nth-child(odd)    { background-color:#eee; }
+            
+    </style>
+
+
+
+    <table class="table">
+        <tr>
+            <th>
+                @Resources.Position
+            </th>
+            <th>
+                @Resources.CompanyName
+            </th>
+            <th>
+                @Resources.City
+            </th>
+            <th>
+                @Resources.Salary
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>
+                    @Html.ActionLink(item.JobPosition, "Details", "Jobs", new { Id = item.JobId }, new { @class = "btn btn-default" })
+                </td>
+                <td class="company">
+                    @Html.DisplayFor(modelItem => item.JobCompanyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobCity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobSalary)
+                </td>
+
+
+                    <td>
+
+                        @Html.ActionLink(Resources.viewJob, "Details", new { id = item.JobId }, new { @class = "btn btn-info" })
+                        @*@Html.ActionLink("Apply Now", "Create", "Apply", new { id = item.JobId }, new { @class = "btn btn-success" })*@
+                        @Html.ActionLink(Resources.submitCV, "Create", "Submits", new { id = item.JobId }, new { @class = "btn btn-primary" })
+
+                    </td>
+            </tr>
+        }
+
+
+    </table>
+    @Html.PagedListPager(Model, pageNumber => Url.Action("Index", new
+{
+    pageNumber
+}))
+    <p id="result">
+        <strong>
+            @Resources.pagerPage @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+            @Resources.pagerOf @Model.PageCount
+        </strong>
+    </p>
+</div>

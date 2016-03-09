@@ -1,0 +1,89 @@
+﻿@model jobApp.Models.Job
+
+@{
+    ViewBag.Title = Resources.deletebtn;
+}
+
+<h2>@Resources.deletebtn</h2>
+
+<h3 style="color:red">@Resources.deleteconf</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JobPosition)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobPosition)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JobCompanyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobCompanyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JobCompany)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobCompany)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JobDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JobRequirements)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobRequirements)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JobCity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobCity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JobSalary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobSalary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="@Resources.deletebtn" class="btn btn-danger" /> |
+            @Html.ActionLink(Resources.backtolist, "Index")
+        </div>
+    }
+</div>

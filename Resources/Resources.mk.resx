@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="allcategories" xml:space="preserve">
+    <value>Сите Категории</value>
+  </data>
+  <data name="Banking" xml:space="preserve">
+    <value>Банкарство</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Категории</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Град</value>
+  </data>
+  <data name="CityRequired" xml:space="preserve">
+    <value>Внесете локација</value>
+  </data>
+  <data name="CompanyDescription" xml:space="preserve">
+    <value>Збор за фирмата</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Име на фирма</value>
+  </data>
+  <data name="CompanyNameRequired" xml:space="preserve">
+    <value>Внесете име на компанија</value>
+  </data>
+  <data name="ConfirmPassRequired" xml:space="preserve">
+    <value>Лозинките не се совпаѓаат</value>
+  </data>
+  <data name="Construction" xml:space="preserve">
+    <value>Градежништво</value>
+  </data>
+  <data name="contactComments" xml:space="preserve">
+    <value>Прати Коментар</value>
+  </data>
+  <data name="contactContact" xml:space="preserve">
+    <value>Контакт</value>
+  </data>
+  <data name="contactLocation" xml:space="preserve">
+    <value>Локација</value>
+  </data>
+  <data name="deletebtn" xml:space="preserve">
+    <value>Избриши</value>
+  </data>
+  <data name="detailsbtn" xml:space="preserve">
+    <value>Детали</value>
+  </data>
+  <data name="editbtn" xml:space="preserve">
+    <value>Уреди</value>
+  </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>Е-Пошта</value>
+  </data>
+  <data name="FromEmailRequired" xml:space="preserve">
+    <value>Внесете е-пошта</value>
+  </data>
+  <data name="FromNameRequired" xml:space="preserve">
+    <value>Внесете цело име и презиме</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>Име и Презиме</value>
+  </data>
+  <data name="InformationTechnology" xml:space="preserve">
+    <value>Информатички технологии</value>
+  </data>
+  <data name="JobDescription" xml:space="preserve">
+    <value>Опис на работата</value>
+  </data>
+  <data name="jobFound" xml:space="preserve">
+    <value>резултат од вашето пребарување</value>
+  </data>
+  <data name="jobsFound" xml:space="preserve">
+    <value>резултати од вашето пребарување</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Логирај се</value>
+  </data>
+  <data name="LogOff" xml:space="preserve">
+    <value>Одлогирај се</value>
+  </data>
+  <data name="LogOn" xml:space="preserve">
+    <value>Логирај се</value>
+  </data>
+  <data name="Long50" xml:space="preserve">
+    <value>Полето може да содржи најмногу 50 букви</value>
+  </data>
+  <data name="Long500" xml:space="preserve">
+    <value>Полето може да содржи најмногу 500 букви</value>
+  </data>
+  <data name="LongPass100" xml:space="preserve">
+    <value>Лозинката мора да биде најмалку 6 карактери</value>
+  </data>
+  <data name="Marketing" xml:space="preserve">
+    <value>Маркетинг</value>
+  </data>
+  <data name="menuContact" xml:space="preserve">
+    <value>Контакт</value>
+  </data>
+  <data name="menuHome" xml:space="preserve">
+    <value>Почетна</value>
+  </data>
+  <data name="menuJobs" xml:space="preserve">
+    <value>Работа</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Порака</value>
+  </data>
+  <data name="MessageRequired" xml:space="preserve">
+    <value>Внесете ја пораката која ја испраќате</value>
+  </data>
+  <data name="noMatch" xml:space="preserve">
+    <value>Нема резултати</value>
+  </data>
+  <data name="pagerOf" xml:space="preserve">
+    <value>Од</value>
+  </data>
+  <data name="pagerPage" xml:space="preserve">
+    <value>Страна</value>
+  </data>
+  <data name="PassRequired" xml:space="preserve">
+    <value>Внесете лозинка</value>
+  </data>
+  <data name="Position" xml:space="preserve">
+    <value>Позиција</value>
+  </data>
+  <data name="PositionRequired" xml:space="preserve">
+    <value>Внесете позиција на работно место</value>
+  </data>
+  <data name="postJob" xml:space="preserve">
+    <value>Внеси</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Регистрација</value>
+  </data>
+  <data name="Retail" xml:space="preserve">
+    <value>Малопродажба</value>
+  </data>
+  <data name="Salary" xml:space="preserve">
+    <value>Плата</value>
+  </data>
+  <data name="Sales" xml:space="preserve">
+    <value>Продажба</value>
+  </data>
+  <data name="SearchBtn" xml:space="preserve">
+    <value>Барај</value>
+  </data>
+  <data name="searchbycity" xml:space="preserve">
+    <value>Град</value>
+  </data>
+  <data name="searchbyposition" xml:space="preserve">
+    <value>Позиција</value>
+  </data>
+  <data name="searchingforjob" xml:space="preserve">
+    <value>Барате Работа ?</value>
+  </data>
+  <data name="sendBtn" xml:space="preserve">
+    <value>Прати</value>
+  </data>
+  <data name="SkillsRequirements" xml:space="preserve">
+    <value>Предиспозиции</value>
+  </data>
+  <data name="submitCV" xml:space="preserve">
+    <value>Прати CV</value>
+  </data>
+  <data name="viewJob" xml:space="preserve">
+    <value>Види Детали</value>
+  </data>
+  <data name="confirmPass" xml:space="preserve">
+    <value>Потврди ја лозинката</value>
+  </data>
+  <data name="createAcc" xml:space="preserve">
+    <value>Креирај нов</value>
+  </data>
+  <data name="pass" xml:space="preserve">
+    <value>Лозинка</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Запамти</value>
+  </data>
+  <data name="useAnotherService" xml:space="preserve">
+    <value>Други сервиси за логирање</value>
+  </data>
+  <data name="useLocalAccLogin" xml:space="preserve">
+    <value>Локален сервис за логирање</value>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Здраво</value>
+  </data>
+  <data name="applicantFound" xml:space="preserve">
+    <value>Апликант</value>
+  </data>
+  <data name="applicantsFound" xml:space="preserve">
+    <value>Апликанти</value>
+  </data>
+  <data name="insertsearch" xml:space="preserve">
+    <value>Внеси позиција и стисни ENTER</value>
+  </data>
+  <data name="backtolist" xml:space="preserve">
+    <value>Врати се назад</value>
+  </data>
+  <data name="deleteconf" xml:space="preserve">
+    <value>Дали сте сигурни дека сакате да го избришете ова ?</value>
+  </data>
+  <data name="savebtn" xml:space="preserve">
+    <value>Зачувај</value>
+  </data>
+  <data name="Download" xml:space="preserve">
+    <value>Превземи</value>
+  </data>
+  <data name="myJobsmenu" xml:space="preserve">
+    <value>Мои Огласи</value>
+  </data>
+</root>
